@@ -24,7 +24,7 @@ require('dotenv').config();
 const CompaniesDB = require("./modules/companiesDB.js");
 const db = new CompaniesDB();
 
-
+let MONGODB_CONN_STRING="mongodb+srv://dbuser:65QctrTe.93aFxk@cluster0.k4yjgtq.mongodb.net/sample_training";
 // Add support for incoming JSON entities
 app.use(bodyParser.json());
 
@@ -108,8 +108,8 @@ app.use((req, res) => {
     res.status(404).send('Resource not found');
   });
 
-  db.initialize(process.env.MONGODB_CONN_STRING).then(()=>{
-    // db.initialize(MONGODB_CONN_STRING).then(()=>{
+  //db.initialize(process.env.MONGODB_CONN_STRING).then(()=>{
+     db.initialize(MONGODB_CONN_STRING).then(()=>{
       app.listen(HTTP_PORT, ()=>{
           console.log(`server listening on: ${HTTP_PORT}`);
       });
