@@ -30,7 +30,8 @@ app.use(bodyParser.json());
 
 // Deliver the app's home page to browser clients
 app.get('/', (req, res) => {
-  res.json({message: "API Listening"});
+ //res.json({message: "API Listening"});
+  res.sendFile(path.join(__dirname, '/index.html'));
 });
 
 // POST /api/companies
